@@ -1,0 +1,75 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 8-340defec456f
+Exec   : blockMesh
+Date   : Mar 13 2021
+Time   : 19:35:46
+Host   : "wbc-System-Product-Name"
+PID    : 38942
+I/O    : uncollated
+Case   : /home/wbc/Desktop/sky_cooling/buoyantCavity
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "system/blockMeshDict"
+No non-linear block edges defined
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 0
+		Number of boundary faces : 6
+		Number of defined boundary faces : 6
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 1
+    Block 0 cell size :
+        i : 0.142857 .. 0.142857
+        j : 0.0333333 .. 0.0333333
+        k : 0.133333 .. 0.133333
+
+There are no merge patch pairs edges
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 0 0) (5 5 2)
+  nPoints: 86976
+  nCells: 78750
+  nFaces: 244275
+  nInternalFaces: 228225
+----------------
+Patches
+----------------
+  patch 0 (start: 228225 size: 525) name: Left
+  patch 1 (start: 228750 size: 525) name: Right
+  patch 2 (start: 229275 size: 4500) name: frontAndBack
+  patch 3 (start: 233775 size: 5250) name: hot
+  patch 4 (start: 239025 size: 5250) name: cold
+
+End
+
