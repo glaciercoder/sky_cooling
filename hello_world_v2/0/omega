@@ -28,17 +28,17 @@ boundaryField
     LeftandRight
     {
         type            omegaWallFunction;
-        value           uniform 0.12;
+        value           $internalField;
     }
     hot
     {
         type            omegaWallFunction;
-        value           uniform 0.12;
+        value           $internalField;
     }
     cold
     {
         type            omegaWallFunction;
-        value           uniform 0.12;
+        value           $internalField;
     }
     inlet
     {

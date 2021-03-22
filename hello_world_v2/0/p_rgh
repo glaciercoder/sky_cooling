@@ -43,6 +43,7 @@ boundaryField
         type            fixedFluxPressure;
         value           $internalField;
     }
+    
     inlet
     {
         type            fixedFluxPressure;

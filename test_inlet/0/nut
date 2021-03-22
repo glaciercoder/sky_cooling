@@ -11,13 +11,13 @@ FoamFile
     format      ascii;
     class       volScalarField;
     location    "0";
-    object      epsilon;
+    object      nut;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -3 0 0 0 0];
+dimensions      [0 2 -1 0 0 0 0];
 
-internalField   uniform 0.01;
+internalField   uniform 0;
 
 boundaryField
 {
@@ -25,31 +25,36 @@ boundaryField
     {
         type            empty;
     }
-    LeftandRight
+
+    leftAndRight
     {
-        type            epsilonWallFunction;
+        type            nutkWallFunction;
         value           $internalField;
-    }
-    hot
-    {
-        type            epsilonWallFunction;
-        value           $internalField;
-    }
-    cold
-    {
-        type            epsilonWallFunction;
-        value           $internalField;
-    }
-    inlet
-    {
-        type            fixedValue;
-        value           $internalField;
-    }
-    outlet
-    {
-        type            zeroGradient;
     }
 
+    hot
+    {
+        type            nutkWallFunction;
+        value           $internalField;
+    }
+
+    cold
+    {
+        type            nutkWallFunction;
+        value           $internalField;
+    }
+
+    inlet
+    {
+	    type            calculated;
+        value           $internalField;
+    }
+
+    outlet
+    {
+        type            calculated;
+        value           $internalField;
+    }
 }
 
 

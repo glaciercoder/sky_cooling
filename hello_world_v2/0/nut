@@ -17,7 +17,7 @@ FoamFile
 
 dimensions      [0 2 -1 0 0 0 0];
 
-internalField   uniform 0;
+internalField   uniform 1e-5;
 
 boundaryField
 {
@@ -28,28 +28,27 @@ boundaryField
     LeftandRight
     {
         type            nutkWallFunction;
-        value           uniform 0;
+        value           $internalField;
     }
     hot
     {
         type            nutkWallFunction;
-        value           uniform 0;
+        value           $internalField;
     }
     cold
     {
         type            nutkWallFunction;
-        value           uniform 0;
+        value           $internalField;
     }
-    
     inlet
     {
 	type            calculated;
-        value           uniform 0;
+        value           $internalField;
     }
     outlet
     {
         type            calculated;
-        value           uniform 0;
+        value           $internalField;
     }
     
 }

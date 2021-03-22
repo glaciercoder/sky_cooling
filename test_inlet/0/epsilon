@@ -25,31 +25,35 @@ boundaryField
     {
         type            empty;
     }
-    LeftandRight
+
+    leftAndRight
     {
         type            epsilonWallFunction;
         value           $internalField;
     }
+
     hot
     {
         type            epsilonWallFunction;
         value           $internalField;
     }
+
     cold
     {
         type            epsilonWallFunction;
         value           $internalField;
     }
+
     inlet
     {
         type            fixedValue;
         value           $internalField;
     }
+    
     outlet
     {
         type            zeroGradient;
     }
-
 }
 
 

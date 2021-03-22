@@ -9,47 +9,45 @@ FoamFile
 {
     version     2.0;
     format      ascii;
-    class       volScalarField;
-    location    "0";
-    object      epsilon;
+    class       dictionary;
+    location    "constant";
+    object      thermophysicalProperties;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-dimensions      [0 2 -3 0 0 0 0];
-
-internalField   uniform 0.01;
-
-boundaryField
+thermoType
 {
-    frontAndBack
-    {
-        type            empty;
-    }
-    LeftandRight
-    {
-        type            epsilonWallFunction;
-        value           $internalField;
-    }
-    hot
-    {
-        type            epsilonWallFunction;
-        value           $internalField;
-    }
-    cold
-    {
-        type            epsilonWallFunction;
-        value           $internalField;
-    }
-    inlet
-    {
-        type            fixedValue;
-        value           $internalField;
-    }
-    outlet
-    {
-        type            zeroGradient;
-    }
+    type            heRhoThermo;
+    mixture         pureMixture;
+    transport       const;
+    thermo          eConst;
+    equationOfState Boussinesq;
+    specie          specie;
+    energy          sensibleInternalEnergy;
+}
 
+mixture
+{
+    specie
+    {
+        molWeight       28.9;
+    }
+    equationOfState
+    {
+        rho0            1;
+        T0              300;
+        beta            3e-03;
+    }
+    thermodynamics
+    {
+        Cv              712;
+        Hf              0;
+    }
+    transport
+    {
+        mu              1e-05;
+        Pr              0.7;
+    }
 }
 
 
