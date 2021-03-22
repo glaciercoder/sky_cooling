@@ -1,3 +1,6 @@
 .bash_history
 .vim*
 *core*
+*polyMesh*
+*processor*
+.config
