@@ -186,6 +186,16 @@ boundary
     //     );
     // }
 
+//    baffleEmpty
+//    {
+//        type empty;
+//        faces
+//        (
+//            (16 24 25 33)
+//            (25 24 16 33)
+//        )
+//    }
+
     inlet
     {
         type patch;
