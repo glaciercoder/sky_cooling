@@ -1,0 +1,208 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    object      blockMeshDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+convertToMeters 1;
+
+L  4; // length of room [m]
+H  3; // height of room [m]
+h  2; // height of cabinet [m]
+l  0.5; // length of baffles; [m]
+        // height of tunnels above ceiling; [m]
+        // length of cabinet [m]
+t  0.1; // thickness of computational domain [m]
+
+d1  #calc "1.0*($l)";
+d2  #calc "2.0*($l)";
+d3  #calc "3.0*($l)";
+d4  #calc "4.0*($l)";
+d5  #calc "5.0*($l)";
+d6  #calc "6.0*($l)";
+d7  #calc "7.0*($l)";
+Hl  #calc "($H)+($l)";
+
+vertices
+(
+    // point 0-7: bottom face of room
+    (0    0    0  ) // point 0
+    ($d2  0    0  ) // point 1
+    ($d3  0    0  ) // point 2
+    ($L   0    0  ) // point 3
+    ($L   $t   0  ) // point 4
+    ($d3  $t   0  ) // point 5
+    ($d2  $t   0  ) // point 6 
+    (0    $t   0  ) // point 7
+
+    // point 8-11: cabinet top face
+    ($d2  0    $h ) // point 8
+    ($d3  0    $h ) // point 9
+    ($d3  $t   $h ) // point 10
+    ($d2  $t   $h ) // point 11
+
+    // point 12-15: top face of room
+    (0    0    $Hl) // point 12
+    ($L   0    $Hl) // point 13
+    ($L   $t   $Hl) // point 14
+    (0    $t   $Hl) // point 15
+
+    // point 16-33: baffles plane
+    (0    0    $H ) // point 16
+    ($d1  0    $H ) // point 17
+    ($d2  0    $H ) // point 18
+    ($d3  0    $H ) // point 19
+    ($d4  0    $H ) // point 20
+    ($d5  0    $H ) // point 21
+    ($d6  0    $H ) // point 22
+    ($d7  0    $H ) // point 23
+    ($L   0    $H ) // point 24
+
+    ($L   $t   $H ) // point 25
+    ($d7  $t   $H ) // point 26
+    ($d6  $t   $H ) // point 27
+    ($d5  $t   $H ) // point 28
+    ($d4  $t   $H ) // point 29
+    ($d3  $t   $H ) // point 30
+    ($d2  $t   $H ) // point 31
+    ($d1  $t   $H ) // point 32
+    (0    $t   $H ) // point 33
+
+    // point 34-37: cabinet top plane
+    (0    0    $h ) // point 34
+    ($L   0    $h ) // point 35
+    ($L   $t   $h ) // point 36
+    (0    $t   $h ) // point 37
+);
+
+blocks
+(
+    hex (0  1  6  7  34 8  11 37) (100 2 200) simpleGrading (1 1 1)
+    hex (34 8  11 37 16 18 31 33) (100 2 100) simpleGrading (1 1 1)
+    hex (8  9  10 11 18 19 30 31) ( 50 2 100) simpleGrading (1 1 1)
+    hex (9  35 36 10 19 24 25 30) (250 2 100) simpleGrading (1 1 1) 
+    hex (2  3  4  5  9  35 36 10) (250 2 200) simpleGrading (1 1 1)
+    hex (16 24 25 33 12 13 14 15) (400 2 100) simpleGrading (1 1 1)
+);
+
+boundary
+(
+    roomWall
+    {
+        type wall;
+        faces
+        (
+            // bottom walls 
+            (0  1  6  7 )
+            (2  3  4  5 )
+
+            // x-normal walls
+            (4  3  35 36)
+            (36 35 24 25)
+            (33 16 34 37)
+            (37 34 0  7 )
+
+            // top wall
+            (15 14 13 12)
+        );
+    }
+
+    roomEmpty
+    {
+        type empty;
+        faces
+        (
+            // y=t
+            (7  6  11 37)
+            (37 11 31 33)
+            (11 10 30 31)
+            (10 36 25 30)
+            (5  4  36 10)
+            (33 25 14 15)
+            // y=0
+            (16 18 8  34)
+            (34 8  1  0 )
+            (18 19 9  8 )
+            (19 24 35 9 )
+            (9  35 3  2 )
+            (12 13 24 16)
+        );
+    }
+
+    cabinetWall
+    {
+        type wall;
+        faces
+        (
+            (6  1  8  11)
+            (8  9  10 11)
+            (10 9  2  5 )
+        );
+    }
+
+    // baffles
+    // (
+    //     (16 17 32 33) // b0
+    //     (17 18 31 32) // b1
+    //     (18 19 30 31) // b2
+    //     (19 20 29 30) // b3
+    //     (20 21 28 29) // b4
+    //     (21 22 27 28) // b5
+    //     (22 23 26 27) // b6
+    //     (23 24 25 26) // b7
+    // )
+        
+    // baffleWall
+    // {
+    //     type wall;
+    //     faces
+    //     (
+    //         (20 21 28 29) // b4
+    //         (21 22 27 28) // b5
+    //         (22 23 26 27) // b6
+    //         (23 24 25 26) // b7
+    //     );
+    // }
+
+    // baffleEmpty
+    // {
+    //     type empty;
+    //     faces
+    //     (
+    //         (16 17 32 33) // b0
+    //         (17 18 31 32) // b1
+    //         (18 19 30 31) // b2
+    //         (19 20 29 30) // b3
+    //     );
+    // }
+
+    inlet
+    {
+        type patch;
+        faces
+        (
+            (25 24 13 14)
+        );
+    }
+
+    outlet
+    {
+        type patch;
+        faces
+        (
+            (15 12 16 33)
+        );
+    }
+);
+
+// ************************************************************************* //
