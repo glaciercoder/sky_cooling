@@ -16,7 +16,7 @@ FoamFile
 
 dimensions      [0 0 0 1 0 0 0];
 
-internalField   uniform 298.15;
+internalField   uniform 293.15;
 
 boundaryField
 {
@@ -31,6 +31,12 @@ boundaryField
         value           $internalField;
     }
 
+    defaultWall
+    {
+        type            fixedValue;
+        value           $internalField;
+    }
+
 //     baffleWall
 //     {
 //         type            zeroGradient;
@@ -39,13 +45,13 @@ boundaryField
     cabinetWall
     {
         type            fixedValue;
-        value           uniform 313.15; // 40 degC
+        value           uniform 323.15; // 50 degC
     }
 
     inlet
     {
         type            fixedValue;
-        value 	        uniform 298.15;
+        value 	        uniform 293.15;
     }
 
     outlet

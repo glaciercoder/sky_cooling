@@ -10,40 +10,38 @@ FoamFile
     version     2.0;
     format      ascii;
     class       dictionary;
-    location    "system";
-    object      controlDict;
+    object      createPatchDict;
 }
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
-application     buoyantSimpleFoam;
+pointSync false;
 
-startFrom       startTime;
+writeCyclicMatch  false;
 
-startTime       0;
+patches
+(
+    {
+        name inlet;
 
-stopAt          endTime;
+        patchInfo
+        {
+            type patch;
+        }
 
-endTime         3000;
+        constructFrom set;
+        set inlet;
+    }
+    {
+        name outlet;
 
-deltaT          1;
+        patchInfo
+        {
+            type patch;
+        }
 
-writeControl    timeStep;
-
-writeInterval   100;
-
-purgeWrite      0;
-
-writeFormat     ascii;
-
-writePrecision  6;
-
-writeCompression off;
-
-timeFormat      general;
-
-timePrecision   6;
-
-runTimeModifiable true;
-
+        constructFrom set;
+        set outlet;
+    }
+);
 
 // ************************************************************************* //
