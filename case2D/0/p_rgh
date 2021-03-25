@@ -41,6 +41,7 @@ boundaryField
     {
         type            prghPressure;
         p               $internalField;
+        // type            fixedFluxPressure;
         value           $internalField;
     }
 }

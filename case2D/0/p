@@ -25,22 +25,41 @@ boundaryField
         type            empty;
     }
 
+    // ".*Wall"
+    // {
+    //     type            calculated;
+    //     value           $internalField;
+    // }
+
+    // inlet
+    // {
+    //     type            calculated;
+    //     value           $internalField;
+    // }
+
+    // outlet
+    // {
+    //     type            calculated;
+    //     value           $internalField;
+    // }
+
     ".*Wall"
     {
-        type            calculated;
-        value           $internalField;
+        type            zeroGradient;
     }
 
     inlet
     {
-        type            calculated;
-        value           $internalField;
+        type            zeroGradient;
+        // type            fixedValue;
+        // value           $internalField;
     }
 
     outlet
     {
-        type            calculated;
-        value           $internalField;
+        type            zeroGradient;
+        // type            fixedValue;
+        // value           $internalField;
     }
 }
 

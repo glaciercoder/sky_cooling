@@ -37,11 +37,6 @@ boundaryField
         value           $internalField;
     }
 
-//     baffleWall
-//     {
-//         type            zeroGradient;
-//     }
-
     cabinetWall
     {
         type            fixedValue;
