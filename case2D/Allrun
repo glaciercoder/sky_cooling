@@ -10,4 +10,6 @@ application=$(getApplication)
 runApplication blockMesh
 runApplication topoSet
 runApplication createPatch -overwrite
-runApplication $application
+runApplication decomposePar
+mpirun -np 8 $application -parallel
+runApplication reconstructPar

@@ -87,11 +87,11 @@ vertices
 
 blocks
 (
-    hex (0  1  6  7  34 8  11 37) (20 2 80) simpleGrading (1 1 1)
-    hex (34 8  11 37 16 18 31 33) (20 2 40) simpleGrading (1 1 1)
-    hex (8  9  10 11 18 19 30 31) (10 2 40) simpleGrading (1 1 1)
-    hex (9  35 36 10 19 24 25 30) (50 2 40) simpleGrading (1 1 1) 
-    hex (2  3  4  5  9  35 36 10) (50 2 80) simpleGrading (1 1 1)
+    hex (0  1  6  7  34 8  11 37) (20 2 40) simpleGrading (1 1 1)
+    hex (34 8  11 37 16 18 31 33) (20 2 40) simpleGrading (1 1 0.4)
+    hex (8  9  10 11 18 19 30 31) (10 2 40) simpleGrading (1 1 0.4)
+    hex (9  35 36 10 19 24 25 30) (50 2 40) simpleGrading (1 1 0.4) 
+    hex (2  3  4  5  9  35 36 10) (50 2 40) simpleGrading (1 1 1)
     // hex (16 24 25 33 12 13 14 15) (80 2 20) simpleGrading (1 1 1)
 );
 

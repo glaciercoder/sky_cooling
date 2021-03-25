@@ -33,19 +33,19 @@ boundaryField
     inlet
     {
         type            fixedValue;
-        value           uniform (0.2 0 0);
+        value           uniform (1 0 0);
+    }
+
+    outlet
+    {
+        type		    zeroGradient;
     }
 
     // outlet
     // {
-    //     type		    zeroGradient;
+    //     type            pressureInletOutletVelocity;
+    //     value           $internalField;
     // }
-
-    outlet
-    {
-        type            pressureInletOutletVelocity;
-        value           $internalField;
-    }
 
 }
 
