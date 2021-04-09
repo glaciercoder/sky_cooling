@@ -1,0 +1,80 @@
+/*---------------------------------------------------------------------------*\
+  =========                 |
+  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\    /   O peration     | Website:  https://openfoam.org
+    \\  /    A nd           | Version:  8
+     \\/     M anipulation  |
+\*---------------------------------------------------------------------------*/
+Build  : 8-340defec456f
+Exec   : blockMesh
+Date   : Mar 23 2021
+Time   : 19:13:45
+Host   : "wbc-System-Product-Name"
+PID    : 64627
+I/O    : uncollated
+Case   : /home/wbc/Desktop/sky_cooling/test_inlet
+nProcs : 1
+sigFpe : Enabling floating point exception trapping (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 10)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Creating block mesh from
+    "system/blockMeshDict"
+No non-linear block edges defined
+No non-planar block faces defined
+Creating topology blocks
+Creating topology patches
+
+Creating block mesh topology
+
+Check topology
+
+	Basic statistics
+		Number of internal faces : 1
+		Number of boundary faces : 10
+		Number of defined boundary faces : 10
+		Number of undefined boundary faces : 0
+	Checking patch -> block consistency
+
+Creating block offsets
+Creating merge list .
+
+Creating polyMesh from blockMesh
+Creating patches
+Creating cells
+Creating points with scale 0.01
+    Block 0 cell size :
+        i : 0.00025 .. 0.00025
+        j : 0.0005 .. 0.0005
+        k : 0.000263636 .. 0.000263636
+    Block 1 cell size :
+        i : 0.00025 .. 0.00025
+        j : 0.0005 .. 0.0005
+        k : 0.0002 .. 0.0002
+
+There are no merge patch pairs edges
+
+Writing polyMesh
+----------------
+Mesh Information
+----------------
+  boundingBox: (0 0 0) (0.05 0.001 0.03)
+  nPoints: 69948
+  nCells: 46000
+  nFaces: 161630
+  nInternalFaces: 114370
+----------------
+Patches
+----------------
+  patch 0 (start: 114370 size: 440) name: leftAndRight
+  patch 1 (start: 114810 size: 46000) name: frontAndBack
+  patch 2 (start: 160810 size: 400) name: hot
+  patch 3 (start: 161210 size: 400) name: cold
+  patch 4 (start: 161610 size: 10) name: inlet
+  patch 5 (start: 161620 size: 10) name: outlet
+
+End
+

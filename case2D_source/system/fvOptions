@@ -1,0 +1,34 @@
+/--------------------------------- C++ -----------------------------------
+| ========= | |
+| \ / F ield | OpenFOAM: The Open Source CFD Toolbox |
+| \ / O peration | Version: 2.3.0 |
+| \ / A nd | Web: www.OpenFOAM.org 2 |
+| \/ M anipulation | |
+*---------------------------------------------------------------------------*/
+FoamFile
+{
+version 2.0;
+format ascii;
+class dictionary;
+location “system”;
+object fvOptions;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+heatSource
+{
+	type scalarSemiImplicitSource;
+	active true;
+	selectionMode cellSet;
+
+	scalarSemiImplicitSourceCoeffs
+	{
+	cellSet CPU; 
+	selectionMode cellSet;
+	volumeMode absolute; 
+	injectionRateSuSp
+	{
+	T (796  0); //The heat source value is calculated as Q / (rho * cp) , where Q is the W/m3,
+	//rho is density, cp specific heat, in this case I used 300 Watts, 1.25 rho, 1.005 cp
+	}
+	}
+}
